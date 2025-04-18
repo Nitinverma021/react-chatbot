@@ -1,0 +1,125 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #333 #1a1a1a;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.messages .userMsg {
+  background-color: #181818;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 90%;
+  width: fit-content;
+  align-self: flex-end;
+  margin: 0.5rem 0;
+  word-break: break-word;
+  direction: ltr;
+  text-align: left;
+}
+
+.messages .responseMsg {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 90%;
+  width: fit-content;
+  align-self: flex-start;
+  margin: 0.5rem 0;
+  word-break: break-word;
+  direction: ltr;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .messages .userMsg,
+  .messages .responseMsg {
+    max-width: 80%;
+  }
+}
+
+/* Code block styles */
+pre {
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  background: #2a2a2a !important;
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Scrollbar styles */
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 3px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.userMsg, .responseMsg {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .messages {
+    gap: 0.5rem;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 80px);
+  }
+
+  pre {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+  }
+
+  code {
+    font-size: 0.85rem;
+  }
+}
+
+/* Fix iOS bottom safe area */
+@supports (padding: max(0px)) {
+  .messages {
+    padding-bottom: max(env(safe-area-inset-bottom), 80px);
+  }
+}
