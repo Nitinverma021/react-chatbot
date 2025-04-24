@@ -1,23 +1,3 @@
-// import { RotatingLines } from "react-loader-spinner";
-
-// const Loader = ({ loading, message = "Thinking..." }) => {
-//   return (
-//     <div className="flex flex-col items-center gap-4">
-//       <RotatingLines
-//         strokeColor="white"
-//         strokeWidth="5"
-//         animationDuration="0.75"
-//         width="48"
-//         visible={loading}
-//       />
-//       <p className="text-gray-400 text-sm animate-pulse">{message}</p>
-//     </div>
-//   );
-// };
-
-// export default Loader; 
-
-
 
 import { RotatingLines } from "react-loader-spinner";
 

@@ -20,7 +20,8 @@ const ChatHeader = ({ onNewChat }) => {
   };
 
   return (
-    <header className="sticky top-0 z-20 bg-gradient-to-r from-[#0e0e0e] to-[#1a1a1a] border-b border-blue-500/20 backdrop-blur-sm shadow-sm">
+    // <header className="sticky top-0 z-20 bg-gradient-to-r from-[#0e0e0e] to-[#1a1a1a] border-b border-blue-500/20 backdrop-blur-sm shadow-sm">
+    <header className="sticky  top-0 z-20 bg-gradient-to-r from-[#0e0e0e] to-[#1a1a1a] border-b border-blue-500/20 backdrop-blur-sm shadow-sm">
       <div className="flex items-center justify-center w-full h-full px-4 py-4">
         <div className="max-w-5xl w-full flex items-center justify-between">
           <h2 className="text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-500 text-transparent bg-clip-text tracking-tight">
