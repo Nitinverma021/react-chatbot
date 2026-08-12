@@ -18,6 +18,26 @@ const authFormSchema = (type) => {
   });
 };
 
+const getAuthErrorMessage = (error) => {
+  if (error?.code === 'auth/permission-denied' || error?.message?.includes('has been suspended')) {
+    return 'Firebase rejected this app configuration. Update VITE_FIREBASE_API_KEY in the active environment, restart the app, and redeploy if hosted.';
+  }
+
+  if (error?.code === 'auth/api-key-not-valid') {
+    return 'The Firebase API key is invalid. Copy the Web app configuration from Firebase Project settings.';
+  }
+
+  if (error?.code === 'auth/configuration-not-found') {
+    return 'Firebase Authentication is not configured for this project. Enable Email/Password in Firebase Authentication → Sign-in method, then use the complete Web app configuration from that same project.';
+  }
+
+  if (error?.code === 'auth/unauthorized-domain') {
+    return 'This domain is not authorized for Firebase Authentication. Add it in Firebase Authentication → Settings → Authorized domains.';
+  }
+
+  return error?.message || 'An error occurred. Please try again.';
+};
+
 const AuthForm = ({ type }) => {
   const navigate = useNavigate();
   const isSignIn = type === 'sign-in';
@@ -86,7 +106,7 @@ const AuthForm = ({ type }) => {
       }
     } catch (error) {
       console.error(error);
-      toast.error(error.message || 'An error occurred. Please try again.');
+      toast.error(getAuthErrorMessage(error));
     }
   };
 
@@ -163,4 +183,4 @@ const AuthForm = ({ type }) => {
   );
 };
 
-export default AuthForm; 
+export default AuthForm;
